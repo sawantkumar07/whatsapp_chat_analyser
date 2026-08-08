@@ -2,6 +2,7 @@
 # --------------------------------------------------------
 # URL Extractor Object
 # --------------------------------------------------------
+from urlextract import URLExtract
 extract = URLExtract()
 
 
