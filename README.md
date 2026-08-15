@@ -4,10 +4,7 @@ A web application built using Streamlit to analyze WhatsApp chats.
 
 ## 🚀 Live Demo
 
-## 🚀 Live Demo
-
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://whatsappchatanalyser-kycqcdeficat4a5ob7nrod.streamlit.app/)
-
+https://whatsappchatanalyser-kycqcdeficat4a5ob7nrod.streamlit.app/
 ## Features
 
 - 📊 Total messages
