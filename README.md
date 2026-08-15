@@ -1,8 +1,21 @@
 # WhatsApp Chat Analyzer
+
+A web application built using Streamlit to analyze WhatsApp chats.
+
 ## 🚀 Live Demo
 
-👉 [Click here to use WhatsApp Chat Analyzer](https://whatsappchatanalyser-kycqcdeficat4a5ob7nrod.streamlit.app/)
+👉 [Open WhatsApp Chat Analyzer](https://whatsappchatanalyser-kycqcdeficat4a5ob7nrod.streamlit.app/)
 
+## Features
+
+- 📊 Total messages
+- 👥 Most active users
+- ☁️ Word cloud
+- 🔤 Most common words
+- 📅 Monthly timeline
+- 📈 Daily timeline
+- 🔥 Activity heatmap
+- 
 WhatsApp Chat Analyzer is a Python-based project that helps to analyze WhatsApp chat data and understand different statistics from a conversation.
 
 The project takes an exported WhatsApp chat file and processes the messages to generate useful information such as total messages, total words, media shared, most active users, and other chat-related statistics.
