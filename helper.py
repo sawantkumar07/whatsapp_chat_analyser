@@ -1,14 +1,25 @@
+# --------------------------------------------------------
+# Imports
+# --------------------------------------------------------
+
+import pandas as pd
+from collections import Counter
+
+from wordcloud import WordCloud
+from urlextract import URLExtract
+
 
 # --------------------------------------------------------
 # URL Extractor Object
 # --------------------------------------------------------
-from urlextract import URLExtract
+
 extract = URLExtract()
 
 
 # --------------------------------------------------------
 # Total Messages, Words, Media and Links
 # --------------------------------------------------------
+
 def fetch_stats(selected_user, df):
 
     if selected_user != 'Overall':
@@ -19,11 +30,14 @@ def fetch_stats(selected_user, df):
 
     # Total Words
     words = []
+
     for message in df['message']:
         words.extend(message.split())
 
     # Total Media
-    num_media_message = df[df['message'].str.contains("<Media omitted>", na=False)].shape[0]
+    num_media_message = df[
+        df['message'].str.contains("<Media omitted>", na=False)
+    ].shape[0]
 
     # Total Links
     links = []
@@ -39,12 +53,16 @@ def fetch_stats(selected_user, df):
 # --------------------------------------------------------
 # Most Busy Users
 # --------------------------------------------------------
+
 def most_busy_users(df):
 
     x = df['user'].value_counts().head()
 
     percent = (
-        round((df['user'].value_counts() / df.shape[0]) * 100, 2)
+        round(
+            (df['user'].value_counts() / df.shape[0]) * 100,
+            2
+        )
         .reset_index()
     )
 
@@ -56,6 +74,7 @@ def most_busy_users(df):
 # --------------------------------------------------------
 # Word Cloud
 # --------------------------------------------------------
+
 def create_wordcloud(selected_user, df):
 
     if selected_user != 'Overall':
@@ -83,7 +102,6 @@ def create_wordcloud(selected_user, df):
         for word in message.lower().split():
 
             if word not in stop_words:
-
                 current_words.append(word)
 
         cleaned_messages.append(" ".join(current_words))
@@ -103,6 +121,7 @@ def create_wordcloud(selected_user, df):
 # --------------------------------------------------------
 # Top 25 Most Common Words
 # --------------------------------------------------------
+
 def most_common_words(selected_user, df):
 
     if selected_user != 'Overall':
@@ -114,6 +133,7 @@ def most_common_words(selected_user, df):
         ~temp['message'].str.contains("<Media omitted>", na=False)
     ]
 
+    # Read stop words
     stop_words = set()
 
     with open("stop_hinglish.txt", "r", encoding="utf-8") as f:
@@ -135,22 +155,35 @@ def most_common_words(selected_user, df):
 
     return most_common_df
 
+
 # --------------------------------------------------------
 # Monthly Timeline
 # --------------------------------------------------------
+
 def monthly_timeline(selected_user, df):
 
     if selected_user != "Overall":
         df = df[df['user'] == selected_user]
 
-    timeline = df.groupby(['year', 'month', 'month_num']).count()['message'].reset_index()
+    timeline = (
+        df.groupby(['year', 'month', 'month_num'])
+        .count()['message']
+        .reset_index()
+    )
 
-    timeline.sort_values(['year', 'month_num'], inplace=True)
+    timeline.sort_values(
+        ['year', 'month_num'],
+        inplace=True
+    )
 
     time = []
 
     for i in range(timeline.shape[0]):
-        time.append(str(timeline['month'][i]) + "-" + str(timeline['year'][i]))
+        time.append(
+            str(timeline['month'].iloc[i])
+            + "-"
+            + str(timeline['year'].iloc[i])
+        )
 
     timeline['time'] = time
 
@@ -160,12 +193,17 @@ def monthly_timeline(selected_user, df):
 # --------------------------------------------------------
 # Daily Timeline
 # --------------------------------------------------------
+
 def daily_timeline(selected_user, df):
 
     if selected_user != "Overall":
         df = df[df['user'] == selected_user]
 
-    daily = df.groupby('only_date').count()['message'].reset_index()
+    daily = (
+        df.groupby('only_date')
+        .count()['message']
+        .reset_index()
+    )
 
     return daily
 
@@ -173,6 +211,7 @@ def daily_timeline(selected_user, df):
 # --------------------------------------------------------
 # Most Busy Month
 # --------------------------------------------------------
+
 def month_activity_map(selected_user, df):
 
     if selected_user != "Overall":
@@ -184,6 +223,7 @@ def month_activity_map(selected_user, df):
 # --------------------------------------------------------
 # Most Busy Day
 # --------------------------------------------------------
+
 def week_activity_map(selected_user, df):
 
     if selected_user != "Overall":
@@ -195,6 +235,7 @@ def week_activity_map(selected_user, df):
 # --------------------------------------------------------
 # Hourly Activity Heatmap
 # --------------------------------------------------------
+
 def activity_heatmap(selected_user, df):
 
     if selected_user != "Overall":
