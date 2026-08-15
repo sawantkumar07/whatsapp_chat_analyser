@@ -1,4 +1,7 @@
 # WhatsApp Chat Analyzer
+## 🚀 Live Demo
+
+👉 [Click here to use WhatsApp Chat Analyzer](https://whatsappchatanalyser-kycqcdeficat4a5ob7nrod.streamlit.app/)
 
 WhatsApp Chat Analyzer is a Python-based project that helps to analyze WhatsApp chat data and understand different statistics from a conversation.
 
