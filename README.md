@@ -3,6 +3,7 @@
 A web application built using Streamlit to analyze WhatsApp chats.
 
 ## 🚀 Live Demo
+https://whatsappchatanalyser-kycqcdeficat4a5ob7nrod.streamlit.app/
 
 👉 **[Open WhatsApp Chat Analyzer](https://whatsappchatanalyser-kycqcdeficat4a5ob7nrod.streamlit.app/)**
 
